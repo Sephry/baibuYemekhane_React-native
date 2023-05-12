@@ -14,6 +14,7 @@ function FoodCard({
 }) {
   return (
     <View style={styles.viewMain}>
+
       <View style={styles.viewDate}>
         <Text style={styles.date}>{date}</Text>
       </View>
@@ -37,6 +38,7 @@ function FoodCard({
         <Text style={styles.yemek}>{tatli}</Text>
         <Text style={styles.yemekKalori}>{tatliKalori}</Text>
       </View>
+      
     </View>
   );
 }

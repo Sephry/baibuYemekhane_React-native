@@ -4,9 +4,11 @@ import database from '@react-native-firebase/database';
 import FlatListBasics from './components/FlatListBasic';
 import Header from './components/Header';
 import {NavigationContainer} from '@react-navigation/native';
+import {FoodWidgetPreview} from './widgets/FoodWidgetPreview';
 
 function App() {
   const [data, setData] = useState('');
+  const [widgetData, setWidgetData] = useState('');
 
   useEffect(() => {
     database()
@@ -14,12 +16,15 @@ function App() {
       .once('value')
       .then(snapshot => {
         setData(Object.values(snapshot.val()));
+        setWidgetData(Object.values(snapshot.val()))
       });
   }, []);
+  console.log(widgetData)
 
   return (
     <NavigationContainer>
       <SafeAreaView style={{flex: 1}}>
+        {/* <FoodWidgetPreview widgetData={widgetData} /> */}
         <View style={styles.container}>
           <Header />
           <FlatListBasics data={data} />
@@ -32,7 +37,7 @@ function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
 });
 
